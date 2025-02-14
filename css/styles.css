@@ -1,0 +1,114 @@
+:root {
+    --orangeColor: #ff7a7a;
+    --btnFreeTrial: #38cc8c;
+    --btnFreeTrialHover: #3db885;
+    --whiteColor: #ffffff;
+    --darkColor: #3e3c49;
+    --purpleColor: #6055a5;
+    --greyColor: #b9b6d3;
+    --redColor: red;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%; /* 1rem = 10px */
+}
+
+*, *:before, *::after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: 'Poppins', Helvetica, sans-serif; 
+    font-size: 1.6rem;
+    background-image: url(../images/bg-intro-mobile.png);
+    background-color: var(--orangeColor);
+    color: var(--whiteColor);
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+.error {
+    color: var(--redColor);
+    font-size: 1.4rem;
+    font-style: italic;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+}
+
+.container {
+    width: min(90%, 120rem);
+    margin: 5rem auto;
+    text-align: center;
+}
+
+.information {
+    padding: 2.5rem;
+    background-color: var(--purpleColor);
+    border-radius: 1rem;
+    box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.5);
+}
+
+.form {
+    background-color: var(--whiteColor);
+    margin-top: 3rem;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.5);
+}
+
+.div-input-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.input-fields {
+    padding: 1.5rem;
+    border-radius: 1rem;
+    border: 1px solid var(--greyColor);
+}
+
+.input-fields:focus {
+    outline: none;
+    border: 1px solid var(--purpleColor);
+}
+
+.btn-submit {
+    background-color: var(--btnFreeTrial);
+    color: var(--whiteColor);
+    border: none;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    font-weight: 700;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.btn-submit:hover {
+    background-color: var(--btnFreeTrialHover);
+}
+
+.terms-and-services {
+    color: var(--darkColor);
+    font-size: 1.4rem;
+    margin: 2rem 0 0 0;
+    line-height: 1.7;
+}
+
+.terms-and-services-link  {
+    color: var(--orangeColor);
+}
+
+.terms-and-services-link:hover {
+    border-bottom: 1px solid var(--orangeColor);
+}
