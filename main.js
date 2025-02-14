@@ -8,13 +8,13 @@ const inputPassword = document.querySelector('#input-password');
 const btnSubmit = document.querySelector('#btn-submit');
 const form = document.querySelector('#form');
 
-inputFirstName.addEventListener('input', validateName);
-inputLastName.addEventListener('input', validateLastName);
-inputEmail.addEventListener('input', validateEmail);
-inputPassword.addEventListener('input', validatePassword);
+inputFirstName.addEventListener('blur', validateFirstName);
+inputLastName.addEventListener('blur', validateLastName);
+inputEmail.addEventListener('blur', validateEmail);
+inputPassword.addEventListener('blur', validatePassword);
 form.addEventListener('submit', submitForm);
 
-const inputValuesObj = {
+const infoFormObj = {
     name: '',
     lastName: '',
     email: '',
@@ -23,38 +23,72 @@ const inputValuesObj = {
 
 
 /** Functions **/
-function validateName(event) {  
-    if(event.target.value.length > 50) {
-        displayError('Name must be less than 50 characters', event.target.parentElement);
-        event.target.value = '';
+function validateFirstName(event) { 
+    const regex = /^[A-Za-zÁÉÍÓÚáéíóúñÑ]+(?: [A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/;
+    if(!regex.test(event.target.value)) {
+        displayError('Please enter a valid name', event.target.parentElement);
         inputFirstName.value = '';
         return;
-    }
-
-    inputValuesObj[event.target.name] = event.target.value.trim().toLowerCase();
+    } 
+    
+    infoFormObj.name = event.target.value.trim().toLowerCase();
 }
 
 function validateLastName(event) {
-    inputValuesObj[event.target.name] = event.target.value.trim().toLowerCase();
+    const regex = /^[A-Za-zÁÉÍÓÚáéíóúñÑ]+(?: [A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/;
+    if(!regex.test(event.target.value)) {
+        displayError('Please enter a valid surname', event.target.parentElement);
+        inputLastName.value = '';
+        return;
+    }
+
+    infoFormObj.lastName= event.target.value.trim().toLowerCase();
 }
 
 function validateEmail(event) {
-    inputValuesObj[event.target.name] = event.target.value.trim().toLowerCase();
-}
+    const regex = /^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/;
+    if(!regex.test(event.target.value)) {
+        displayError('Please enter a valid email', event.target.parentElement);
+        inputEmail.value = '';
+        return;
+    }
+
+    infoFormObj.email = event.target.value.trim().toLowerCase();
+};
 
 function validatePassword(event) {
-    inputValuesObj[event.target.name] = event.target.value.trim().toLowerCase();
-}
+    if(event.target.value.length < 8) {
+        displayError('Password must be at least 8 characters', event.target.parentElement);
+        inputPassword.value = '';
+        return;
+    }
+
+    infoFormObj.password = event.target.value.trim().toLowerCase();
+};
 
 function submitForm(event) {
     event.preventDefault();
 
-    const allRequiredFilled = Object.keys(inputValuesObj).some(key => inputValuesObj[key] === '');
-    if(allRequiredFilled) {
-        displayError('Please fill all required fields', event.target.children[0]);
+    const existEmptyField = Object.keys(infoFormObj).some(key => infoFormObj[key] === '');
+    if(existEmptyField) {
+        displayError('Please fill all the fields', event.target.firstElementChild);
         return;
     }
-}
+
+    Swal.fire({
+        title: "Success!",
+        text: "You claimed your free trial!",
+        icon: "success",
+        confirmButtonText: "Nice!",
+        background: '#fffff',
+        color: '#000000',
+        iconColor: '#02a502',
+        allowOutsideClick: false
+    });
+    
+    Object.keys(infoFormObj).forEach(key => infoFormObj[key] = ''); 
+    form.reset();
+};
 
 function displayError(errorMsg, reference) {
     removeError();
