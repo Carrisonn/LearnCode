@@ -1,7 +1,7 @@
 :root {
-    --orangeColor: #ff7a7a;
     --btnFreeTrial: #38cc8c;
     --btnFreeTrialHover: #3db885;
+    --orangeColor: #ff7a7a;
     --whiteColor: #ffffff;
     --darkColor: #3e3c49;
     --purpleColor: #6055a5;
@@ -45,10 +45,23 @@ img {
     gap: .5rem;
 }
 
-.container {
+main {
     width: min(90%, 120rem);
-    margin: 5rem auto;
+    margin: 0 auto;
     text-align: center;
+    height: 100vh;
+}
+
+.container {
+    margin-top: 5rem;
+}
+
+h1 {
+    font-size: 5rem;
+}
+
+p {
+    line-height: 1.5;
 }
 
 .information {
@@ -111,4 +124,31 @@ img {
 
 .terms-and-services-link:hover {
     border-bottom: 1px solid var(--orangeColor);
+}
+
+/** PC Screen **/
+@media screen and (min-width: 768px) {
+    body {
+        background-image: url(../images/bg-intro-desktop.png);
+    }
+
+    main {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        place-content: center;
+        align-items: center;
+        height: 100vh;
+        width: min(90%, 120rem);
+        margin: 0 auto;
+        text-align: left;
+        gap: 7rem;
+    }
+    
+    .container {
+        margin-top: 0;
+    }
+
+    .container-form {
+        text-align: center;
+    }
 }
