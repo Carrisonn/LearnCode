@@ -22,12 +22,12 @@
                 <p>See how experienced developers solve problems in real-time. Watching scripted tutorials is great, but understanding how developers think is invaluable.</p>
             </div>
             
-            <div class="container">
+            <div class="container container-form">
                 <p class="information">Try it free 7 days then $20/mo. thereafter</p>
                 <form id="form" class="form">
                     <div class="div-input-fields">
-                        <input class="input-fields" type="text" id="input-first-name" name="name" placeholder="First Name" >
-                        <input class="input-fields" type="text" id="input-last-name" name="lastName" placeholder="Last Name" >
+                        <input class="input-fields" type="text" id="input-first-name" maxlength="30" name="name" placeholder="First Name" >
+                        <input class="input-fields" type="text" id="input-last-name" maxlength="30" name="lastName" placeholder="Last Name" >
                         <input class="input-fields" type="email" id="input-email" name="email" placeholder="Email Adress" >
                         <input class="input-fields" type="password" id="input-password" name="password" placeholder="Password" >
                         <input type="submit" id="btn-submit" class="btn-submit" value="Claim your free trial">
@@ -37,5 +37,6 @@
             </div>
         </main>
         <script src="main.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </body>
 </html>
